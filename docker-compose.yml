@@ -1,0 +1,28 @@
+version: "3.4"
+
+x-app-service-template: &app
+  build: rails_app
+  image: yabeda-rails-app:1.0
+  volumes:
+    - ./rails_app:/app
+
+services:
+  rails:
+    <<: *app
+    ports:
+      - 5000:5000
+    environment:
+      REDIS_URL: redis://redis:6379/0
+
+  sidekiq:
+    <<: *app
+    ports:
+      - 5100:5100
+    environment:
+      PORT: 5100
+      REDIS_URL: redis://redis:6379/0
+    command: sidekiq -C config/sidekiq.yml
+
+  redis:
+    image: redis
+    command: redis-server
