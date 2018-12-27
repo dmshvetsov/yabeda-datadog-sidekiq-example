@@ -1,0 +1,22 @@
+## Base on https://github.com/DataDog/datadog-agent/blob/master/Dockerfiles/agent/datadog-docker.yaml
+## Provides autodetected defaults, for vanilla Docker environments,
+## please see datadog.yaml.example for all supported options
+
+# Autodiscovery settings for vanilla Docker
+listeners:
+  - name: docker
+config_providers:
+  - name: docker
+    polling: true
+
+# Enable APM by setting the DD_APM_ENABLED envvar to true, or override this configuration
+apm_config:
+  enabled: false
+  apm_non_local_traffic: true
+
+# Monitor only rails app container
+ac_exclude: ["image:.*"]
+ac_include: ["image:yabeda-datadog-rails-app"]
+
+# Use java cgroup memory awareness
+jmx_use_cgroup_memory_limit: true

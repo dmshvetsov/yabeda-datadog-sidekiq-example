@@ -43,12 +43,13 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
-    bindex (0.5.0)
     builder (3.2.3)
-    byebug (10.0.2)
-    concurrent-ruby (1.0.5)
+    concurrent-ruby (1.1.4)
     connection_pool (2.2.2)
     crass (1.0.4)
+    dogapi (1.32.0)
+      multi_json
+    dogstatsd-ruby (4.0.0)
     dry-initializer (2.5.0)
     erubi (1.7.1)
     execjs (2.7.0)
@@ -76,13 +77,11 @@ GEM
     mini_racer (0.2.3)
       libv8 (>= 6.3)
     minitest (5.11.3)
+    multi_json (1.13.1)
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
-    prometheus-client (0.8.0)
-      quantile (~> 0.2.1)
     puma (3.12.0)
-    quantile (0.2.1)
     rack (2.0.5)
     rack-protection (2.0.4)
       rack
@@ -148,24 +147,20 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.19)
       execjs (>= 0.3.0, < 3)
-    web-console (3.7.0)
-      actionview (>= 5.0)
-      activemodel (>= 5.0)
-      bindex (>= 0.4.0)
-      railties (>= 5.0)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    yabeda (0.1.1)
+    yabeda (0.1.3)
       concurrent-ruby
       dry-initializer
-    yabeda-prometheus (0.1.2)
-      prometheus-client
+    yabeda-datadog (0.2.0)
+      dogapi
+      dogstatsd-ruby
       yabeda
     yabeda-rails (0.1.1)
       rails
       yabeda
-    yabeda-sidekiq (0.1.2)
+    yabeda-sidekiq (0.1.3)
       sidekiq
       yabeda
 
@@ -173,7 +168,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug
   listen (>= 3.0.5, < 3.2)
   mini_racer
   puma (~> 3.11)
@@ -183,8 +177,7 @@ DEPENDENCIES
   sqlite3
   tzinfo-data
   uglifier (>= 1.3.0)
-  web-console (>= 3.3.0)
-  yabeda-prometheus
+  yabeda-datadog
   yabeda-rails
   yabeda-sidekiq (~> 0.1.1)
 
@@ -192,4 +185,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.5
+   1.17.2

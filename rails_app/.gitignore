@@ -12,3 +12,6 @@
 !/log/.keep
 /tmp/*
 dump.rdb
+
+# For the gem development
+/lib/yabeda-datadog

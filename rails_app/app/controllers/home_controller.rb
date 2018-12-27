@@ -3,15 +3,23 @@ class HomeController < ApplicationController
   end
 
   def enqueue
-    rand(1000).times do
-      EmptyJob.perform_later
+    job_randomizer = Array.new(rand(1000)) { rand(6) }
+    job_randomizer.each do |n|
+      case n
+      when 0
+        DangerJob.perform_later
+      when 1
+        EmptyJob.perform_later
+      when 2
+        EmptyJob.set(wait: 10.seconds).perform_later
+      when 3
+        WaitingJob.perform_later
+      when 4
+        WaitingJob.set(wait: 5.seconds).perform_later
+      end
     end
-    rand(1000).times do
-      WaitingJob.perform_later
-    end
-    rand(100).times do
-      DangerJob.perform_later
-    end
+
+    flash[:notice] = "Enqueued #{job_randomizer.size} jobs"
     redirect_to root_path
   end
 end

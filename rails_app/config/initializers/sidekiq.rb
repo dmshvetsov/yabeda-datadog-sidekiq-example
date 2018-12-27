@@ -1,3 +1,3 @@
-Sidekiq.configure_server do |config|
-  Yabeda::Prometheus::Exporter.start_metrics_server!
+Sidekiq.configure_server do |_config|
+  Yabeda::Datadog.start_exporter
 end

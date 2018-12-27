@@ -2,7 +2,9 @@ version: "3.4"
 
 x-app-service-template: &app
   build: rails_app
-  image: yabeda-rails-app:1.0
+  image: yabeda-datadog-rails-app:1.0
+  env_file:
+    - rails.env
   volumes:
     - ./rails_app:/app
 
@@ -11,8 +13,6 @@ services:
     <<: *app
     ports:
       - 5000:5000
-    environment:
-      REDIS_URL: redis://redis:6379/0
 
   sidekiq:
     <<: *app
@@ -20,9 +20,18 @@ services:
       - 5100:5100
     environment:
       PORT: 5100
-      REDIS_URL: redis://redis:6379/0
     command: sidekiq -C config/sidekiq.yml
 
   redis:
     image: redis
     command: redis-server
+
+  datadog-agent:
+    image: datadog/agent:latest
+    env_file:
+      - datadog-agent.env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+      - ./datadog.yaml:/etc/datadog-agent/datadog.yaml

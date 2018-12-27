@@ -26,6 +26,24 @@ body, html {
     padding: 30px;
     font-size: 1rem;
     cursor: pointer;
+    &:hover {
+      background-color: #a9b02c;
+    }
+  }
+}
+
+.e-flash {
+  position: fixed;
+  z-index: 100;
+  background-color: transparent;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  &__notice {
+    color: #525252;
+  }
+  &__error {
+    color: #a62f28;
   }
 }
 
