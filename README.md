@@ -26,7 +26,7 @@ This example is based on [Yabeda Prometheus example](https://github.com/yabeda-r
 
 This example is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-[yabeda]: https://github.com/yabeda/yabeda
+[yabeda]: https://github.com/yabeda-rb/yabeda
 [yabeda-rails]: https://github.com/yabeda/yabeda-rails
 [yabeda-sidekiq]: https://github.com/yabeda/yabeda-sidekiq
 [yabeda-datadog]: https://github.com/yabeda/yabeda-datadog
