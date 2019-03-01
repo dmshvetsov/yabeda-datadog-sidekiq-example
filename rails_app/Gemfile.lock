@@ -42,12 +42,13 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    anyway_config (1.4.4)
     arel (9.0.0)
     builder (3.2.3)
     concurrent-ruby (1.1.4)
     connection_pool (2.2.2)
     crass (1.0.4)
-    dogapi (1.32.0)
+    dogapi (1.33.0)
       multi_json
     dogstatsd-ruby (4.0.0)
     dry-initializer (2.5.0)
@@ -153,7 +154,8 @@ GEM
     yabeda (0.1.3)
       concurrent-ruby
       dry-initializer
-    yabeda-datadog (0.2.0)
+    yabeda-datadog (0.3.2)
+      anyway_config (~> 1.0)
       dogapi
       dogstatsd-ruby
       yabeda
@@ -177,7 +179,7 @@ DEPENDENCIES
   sqlite3
   tzinfo-data
   uglifier (>= 1.3.0)
-  yabeda-datadog
+  yabeda-datadog (= 0.3.2)
   yabeda-rails
   yabeda-sidekiq (~> 0.1.1)
 
@@ -185,4 +187,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

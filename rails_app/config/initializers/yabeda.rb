@@ -1,0 +1,3 @@
+
+
+Yabeda::Datadog.start
